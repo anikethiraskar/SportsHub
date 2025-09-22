@@ -1,0 +1,57 @@
+@use "sass:color";
+
+// Use the same theme variables as navbar
+$primary-dark: #0f172a;
+$accent-pink: #ec4899;
+$accent-yellow: #facc15;
+$text-light: #ffffff;
+
+.form-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 2rem;
+  background: color.adjust($primary-dark, $lightness: 95%); // light background
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: $primary-dark;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    input, select {
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      border-radius: 5px;
+      border: 1px solid color.adjust($primary-dark, $lightness: 60%);
+      font-size: 1rem;
+      background: $text-light;
+    }
+
+    button {
+      padding: 0.8rem;
+      border: none;
+      background-color: $primary-dark;
+      color: $text-light;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: color.adjust($primary-dark, $lightness: -10%);
+      }
+    }
+  }
+
+  .message {
+    text-align: center;
+    margin-top: 1rem;
+    color: $accent-pink;
+  }
+}

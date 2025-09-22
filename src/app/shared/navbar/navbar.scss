@@ -1,0 +1,126 @@
+@use "sass:color";
+
+// 🎨 Theme Colors
+$primary-dark: #0f172a;  // deep navy
+$gradient-start: #0f172a;
+$gradient-end: #2a3344;
+$accent-pink: #ec4899;
+$accent-yellow: #facc15;
+$text-light: #ffffff;
+
+// Navbar Styles
+.navbar {
+  background: linear-gradient(90deg, $gradient-start , $gradient-end );
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  // box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  // Logo
+  &__logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $accent-yellow;
+    cursor: pointer;
+    letter-spacing: 1px;
+    .logoi {
+      position: relative;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;              // ✅ makes child centering easy
+      align-items: center;        // ✅ vertical center
+      justify-content: center;    // ✅ horizontal center
+      //background: $accent-pink;   // optional background circle
+
+      .logoj {
+        height: 100%;             // ✅ fit inside
+        width: 100%;
+        object-fit: cover;        // ✅ keeps aspect ratio & fills circle
+        border-radius: 50%;
+      }
+    }
+    span {
+    margin-left: 0.5rem; // text next to logo
+    font-weight: 700;
+    color: $accent-yellow;
+    a{
+      text-decoration: none;
+      color: $accent-yellow;
+    }
+  }
+  }
+  
+
+  // Links
+  &__links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+
+    li {
+      a {
+        color: $text-light;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $accent-pink;
+        }
+
+        &.active {
+          color: $accent-yellow;
+          border-bottom: 2px solid $accent-yellow;
+          padding-bottom: 0.2rem;
+        }
+      }
+    }
+  }
+
+  // Auth Section
+  &__auth {
+    display: flex;
+    gap: 1rem;
+
+    .login-btn,
+    .signup-btn {
+      padding: 0.4rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .login-btn {
+      background: transparent;
+      color: $text-light;
+      border: 1px solid $accent-yellow;
+
+      &:hover {
+        background: $accent-yellow;
+        color: $primary-dark;
+      }
+    }
+
+    .signup-btn {
+      background: $accent-pink;
+      color: $text-light;
+
+      &:hover {
+        background: color.adjust($accent-pink, $lightness: -10%);
+      }
+    }
+  }
+}

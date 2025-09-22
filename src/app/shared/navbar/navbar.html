@@ -1,0 +1,28 @@
+<nav class="navbar">
+  <div class="navbar__container">
+    <!-- Logo -->
+    <div class="navbar__logo">
+        <div class="logoi">
+          <img src="../../logo2.png" alt="Logo" class="logoj">
+        </div>
+        <span><a routerLink="/home">PlayMerce</a></span>
+    </div>
+
+    <!-- Links -->
+    <ul class="navbar__links">
+      <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+      <li><a routerLink="/features" routerLinkActive="active">Features</a></li>
+      <li><a routerLink="/aboutus" routerLinkActive="active">About-Us</a></li>
+      <li><a routerLink="#" routerLinkActive="active">Sports-Sphere</a></li>
+      <li><a routerLink="#" routerLinkActive="active">Turf</a></li>
+      <li><a routerLink="#" routerLinkActive="active">Tournaments</a></li>
+      <li><a routerLink="#" routerLinkActive="active">Teams</a></li>
+    </ul>
+
+    <!-- Right Section -->
+    <div class="navbar__auth">
+      <button class="login-btn" (click)="navigateToLogin()">Login</button>
+      <button class="signup-btn" (click)="navigateToRegister()">Create Account</button>
+    </div>
+  </div>
+</nav>

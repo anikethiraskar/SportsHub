@@ -1,0 +1,63 @@
+<div class="carousel" 
+    (mouseenter)="stopAutoPlay()" 
+    (mouseleave)="startAutoPlay()">
+
+  <!-- Slides -->
+  <div class="carousel-track" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+
+    <!-- E-Commerce Slide -->
+    <div class="slide parallax-slide">
+      <div class="slide first-slide">
+            <div class="slide__left">
+                <img src="../../p1.png" alt="GEL ROCKET 11" class="banner-img">
+            </div>
+            <div class="slide__right">
+                <p>#gameon with</p>
+                <p class="h2s1">GEL ROCKET 11</p>
+                <button (click)="goToEcommerce()">Shop Now</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Turf Slide -->
+    <div class="slide parallax-slide">
+      <div class="slide second-slide">
+        <div class="slide__left">
+        <img src="../../t2.png" alt="Turf" class="parallax-img">
+      </div>
+      <div class="slide__right">
+        <h2>- India’s First All-in-One Turf Booking Platform <br><span>Find, Book, and Play Anytime!</span></h2>
+        <button (click)="goToTurf()">Book a Turf</button>
+      </div>
+      </div>
+    </div>
+
+    <!-- Tournament Slide -->
+    <div class="slide parallax-slide">
+        <div class="slide third-slide">
+            <div class="slide__left">
+                <img src="../../s6.png" alt="Tournament" class="parallax-img">
+            </div>
+            <div class="slide__right">
+                <h2>Join exciting tournaments across India <br> <span> compete with top players, win big, and make your mark on the turf!</span></h2>
+                <button (click)="goToTournaments()">View Tournaments</button>
+            </div>
+        </div>
+    </div>
+
+  </div>
+
+  <!-- Arrows -->
+  <button class="arrow left" (click)="prev()">⟨</button>
+  <button class="arrow right" (click)="next()">⟩</button> 
+
+  <!-- Dots -->
+  <div class="dots">
+    <span class="dot"
+      *ngFor="let img of cnt; let i = index"
+      [class.active]="i === currentIndex"
+      (click)="goToSlide(i)">
+    </span>
+  </div>
+</div>
