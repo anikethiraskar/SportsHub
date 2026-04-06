@@ -1,0 +1,92 @@
+<div class="shop-container flex gap-6">
+  <!-- Sidebar Filter Panel -->
+  <aside class="filter-panel w-1/4 p-4 bg-gray-100 rounded-2xl shadow">
+    <h3 class="font-bold text-lg mb-4">Filters</h3>
+
+    <!-- Brand -->
+    <label class="block mb-2">
+      Brand:
+      <select [ngModel]="filters().brand"
+              (ngModelChange)="updateFilter('brand', $event)"
+              class="w-full border rounded p-2">
+        <option value="">All</option>
+        <option *ngFor="let b of brands()" [value]="b">{{ b }}</option>
+      </select>
+    </label>
+
+    <!-- Category -->
+    <label class="block mb-2">
+      Category:
+      <select [ngModel]="filters().category"
+              (ngModelChange)="updateFilter('category', $event)"
+              class="w-full border rounded p-2">
+        <option value="">All</option>
+        <option *ngFor="let c of categories()" [value]="c">{{ c }}</option>
+      </select>
+    </label>
+
+    <!-- Price Range -->
+    <label class="block mb-2">
+      Min Price:
+      <input type="number"
+             [ngModel]="filters().minPrice"
+             (ngModelChange)="updateFilter('minPrice', $event)"
+             class="w-full border rounded p-2" />
+    </label>
+
+    <label class="block mb-2">
+      Max Price:
+      <input type="number"
+             [ngModel]="filters().maxPrice"
+             (ngModelChange)="updateFilter('maxPrice', $event)"
+             class="w-full border rounded p-2" />
+    </label>
+
+    <!-- Buttons -->
+    <div class="flex gap-2 mt-4">
+      <button (click)="applyFilters()"
+              class="flex-1 bg-blue-500 text-white rounded p-2 hover:bg-blue-600">
+        Apply
+      </button>
+      <button (click)="clearFilters()"
+              class="flex-1 bg-gray-400 text-white rounded p-2 hover:bg-gray-500">
+        Clear
+      </button>
+    </div>
+  </aside>
+
+  <!-- Product Grid -->
+  <section class="products w-3/4 p-4 grid grid-cols-3 gap-6">
+    <div *ngFor="let product of filteredProducts" class="product-card p-4 border rounded shadow">
+    <img [src]="product.imageUrl" [alt]="product.name" class="w-full h-40 object-cover rounded mb-2" />
+    <h3 class="font-bold">{{ product.name }}</h3>
+    <p class="text-sm text-gray-600">{{ product.description }}</p>
+    <span class="text-green-600 font-semibold">₹{{ product.price }}</span>
+    
+    <!-- Add to Cart Button -->
+    <button 
+      (click)="addToCart(product)"
+      class="mt-2 w-full bg-pink-500 text-white font-semibold rounded p-2 hover:bg-pink-600">
+      Add to Cart
+    </button>
+</div>
+
+  </section>
+</div>
+
+<!-- Pagination -->
+<div class="pagination flex justify-center gap-2 mt-6">
+  <button (click)="prevPage()" [disabled]="page === 0"
+          class="px-3 py-1 border rounded">Prev</button>
+
+  <button *ngFor="let p of [].constructor(totalPages); let i = index"
+          (click)="loadProducts(i)"
+          [class.bg-blue-500]="page === i"
+          [class.text-white]="page === i"
+          class="px-3 py-1 border rounded">
+    {{ i + 1 }}
+  </button>
+
+  <button (click)="nextPage()" [disabled]="page >= totalPages - 1"
+          class="px-3 py-1 border rounded">Next</button>
+</div>

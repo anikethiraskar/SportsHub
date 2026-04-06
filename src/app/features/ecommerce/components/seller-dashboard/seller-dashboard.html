@@ -1,0 +1,63 @@
+<div class="dashboard">
+  <h2>Seller Dashboard</h2>
+
+  <!-- Add Product Form -->
+  <form (ngSubmit)="addProduct()" class="product-form">
+  <legend>Product Name<input type="text" 
+         [ngModel]="newProduct().name" 
+         (ngModelChange)="updateNewProductField('name', $event)" 
+         name="name" 
+         placeholder="Product Name" 
+         required /></legend>
+
+  <legend>Description<input type="text" 
+         [ngModel]="newProduct().description" 
+         (ngModelChange)="updateNewProductField('description', $event)" 
+         name="description" 
+         placeholder="Description" 
+         required /></legend>
+
+  <legend>Price<input type="number" 
+         [ngModel]="newProduct().price" 
+         (ngModelChange)="updateNewProductField('price', $event)" 
+         name="price" 
+         placeholder="Price" 
+         required /></legend>
+
+  <legend>Stock<input type="number" 
+         [ngModel]="newProduct().stock" 
+         (ngModelChange)="updateNewProductField('stock', $event)" 
+         name="stock" 
+         placeholder="Stock" 
+         required /></legend>
+
+  <input type="file" (change)="onFileSelected($event)" accept="image/*" required />
+  <select 
+       [ngModel]="newProduct().category" 
+       (ngModelChange)="updateNewProductField('category', $event)" 
+       name="category" 
+       required>
+       <option value="" disabled selected>Select Category</option>
+       <option *ngFor="let category of productCategories" [value]="category">
+       {{ category }}
+       </option>
+  </select>
+
+
+
+  <button type="submit" class="btn">Add Product</button>
+</form>
+
+
+  <!-- Product List -->
+  <div class="product-list">
+    <h3>My Products</h3>
+    <div class="product-card" *ngFor="let product of products()">
+      <img [src]="product.imageUrl" alt="{{ product.name }}" />
+      <h4>{{ product.name }}</h4>
+      <p>{{ product.description }}</p>
+      <p><strong>₹{{ product.price }}</strong></p>
+      <button (click)="deleteProduct(product.productId)" class="btn-danger">Delete</button>
+    </div>
+  </div>
+</div>

@@ -23,7 +23,7 @@ export class LoginComponent {
       .subscribe({
         next: (res) => {
           this.message = res;
-          this.router.navigate(['/home']); // redirect after login
+          this.router.navigate(['/products']); // redirect after login
         },
         error: (err) => {
           this.message = err.error || 'Login failed!';

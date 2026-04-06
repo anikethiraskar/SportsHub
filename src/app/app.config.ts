@@ -9,6 +9,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes) 
+    provideRouter(routes) ,
+    provideBrowserGlobalErrorListeners()
   ]
 };
