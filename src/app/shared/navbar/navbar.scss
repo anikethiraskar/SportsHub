@@ -93,6 +93,23 @@ $text-light: #ffffff;
     display: flex;
     gap: 1rem;
 
+    .cart-btn {
+    background: $accent-yellow;
+    color: $primary-dark;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: color.adjust($accent-yellow, $lightness: -10%);
+      transform: translateY(-1px);
+    }
+  }
+
+
     .login-btn,
     .signup-btn {
       padding: 0.4rem 1rem;

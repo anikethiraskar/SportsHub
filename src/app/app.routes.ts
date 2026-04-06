@@ -6,6 +6,7 @@ import { RegisterComponent } from './auth/register.component/register.component'
 import { LoginComponent } from './auth/login.component/login.component';
 import { ProductList } from './features/ecommerce/components/product-list/product-list';
 import { SellerDashboard } from './features/ecommerce/components/seller-dashboard/seller-dashboard';
+import { Cart } from './features/ecommerce/components/cart/cart';
 
 export const routes: Routes = [
     {path:'',redirectTo:'/home',pathMatch:'full'},
@@ -15,5 +16,6 @@ export const routes: Routes = [
     {path:'register',component:RegisterComponent},
     {path:'login',component:LoginComponent},
     {path:'products',component:ProductList},
-    {path:'add',component:SellerDashboard}
+    {path:'add',component:SellerDashboard},
+    {path:'cart',component:Cart}
 ];

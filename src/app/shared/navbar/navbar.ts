@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Router } from '@angular/router';
+import { CartService } from '../../features/ecommerce/services/cart';
 
 @Component({
   selector: 'app-navbar',
@@ -9,8 +10,15 @@ import { Router } from '@angular/router';
   styleUrl: './navbar.scss'
 })
 export class Navbar {
-constructor(private router: Router) {}
+// cartCount = 0;
 
+  constructor(private router: Router, public cartService: CartService) {}
+
+  // loadCartCount() {
+  //   this.cartService.getCart().subscribe((cart: any) => {
+  //     this.cartCount = cart.items ? cart.items.length : 0;
+  //   });
+  // }
   navigateToLogin() {
     this.router.navigate(['/login']);
   }

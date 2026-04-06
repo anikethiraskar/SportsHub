@@ -1,0 +1,63 @@
+<div class="cart-container">
+
+  <!-- Cart Items -->
+  <div class="cart-items">
+    <h2>Shopping Cart</h2>
+
+    <!-- Empty Cart -->
+    <div class="empty-cart" *ngIf="!cartItems || cartItems.length === 0">
+      <p>Your cart is currently empty.</p>
+      <button>Continue Shopping</button>
+    </div>
+
+    <!-- Items -->
+    <div class="item" *ngFor="let item of cartItems">
+
+      <div class="item-info">
+        <img [src]="item.product.imageUrl" [alt]="item.product.name">
+
+        <div class="details">
+          <h3>{{ item.product.name }}</h3>
+          <p>{{ item.product.brandName }} | {{ item.product.category }}</p>
+        </div>
+      </div>
+
+      <div class="item-actions">
+
+        <div class="quantity-controls">
+          <button (click)="updateQuantity(item, -1)">-</button>
+          <span>{{ item.quantity }}</span>
+          <button (click)="updateQuantity(item, 1)">+</button>
+        </div>
+
+        <div class="price">
+          ₹{{ item.product.price * item.quantity }}
+        </div>
+
+        <button class="remove-btn" (click)="removeItem(item)">
+          Remove
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Order Summary -->
+  <div class="order-summary">
+
+    <h3>Order Summary</h3>
+
+    <div class="summary-row">
+      <span>Total</span>
+      <span class="total-price">₹{{ cartTotal }}</span>
+    </div>
+
+    <button class="checkout-btn">
+      Proceed to Checkout
+    </button>
+
+  </div>
+
+</div>

@@ -21,6 +21,7 @@
 
     <!-- Right Section -->
     <div class="navbar__auth">
+      <button class="cart-btn" routerLink="/cart">🛒 View Cart ({{ cartService.cartCount() }})</button>
       <button class="login-btn" (click)="navigateToLogin()">Login</button>
       <button class="signup-btn" (click)="navigateToRegister()">Create Account</button>
     </div>

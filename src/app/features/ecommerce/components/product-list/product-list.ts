@@ -3,6 +3,8 @@ import { CommonModule, NgForOf} from '@angular/common';
 import { Product } from '../../../../model/product.model';
 import { ProductService } from '../../services/product.service';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../../services/cart';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-list',
@@ -30,7 +32,10 @@ export class ProductList implements OnInit {
   brands = signal<string[]>(['Nike', 'Adidas', 'Puma', 'Reebok']);
   categories = signal<string[]>(['Shoes', 'Clothing', 'Accessories']);
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.loadProducts();
@@ -98,8 +103,22 @@ clearFilters(): void {
 }
 
 addToCart(product: Product): void {
-  console.log('Added to cart:', product);
-  // Implement actual cart logic here
+  this.cartService.addToCart(product, 1).subscribe({
+    next: (res) => {
+      console.log("Cart updated:", res);
+      Swal.fire({
+        icon: 'success',
+        title: `${product.name} added to cart`,
+        showConfirmButton: false,
+        timer: 1200,
+        position: 'top-end',
+        toast: true,
+        background: '#0f172a',
+        color: '#fff'
+      });
+    },
+    error: (err) => console.error(err)
+  });
 }
 
 
